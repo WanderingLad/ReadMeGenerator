@@ -1,12 +1,12 @@
 {
-  "name": "static-site",
+  "name": "Read-Me-Genertor",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Jimmy Reilly",
   "license": "ISC",
   "dependencies": {
     "fs": "^0.0.1-security",
