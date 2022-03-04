@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
 const generateMarkdown = require('./utils/generateMarkdown.js');
+const api = require('./utils/api.js');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -10,60 +11,143 @@ const questions = [
         type: 'input',
         message: "What is your project's title?",
         name: 'title',
-        validate: isValid(answer)
-    },
+        validate: function (answer)
+        {
+            if(answer)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    } ,
     {
         type: 'input',
         message: "Write a description of your project.",
         name: 'description',
-        validate: isValid(answer)
-    },
+        validate: function (answer)
+        {
+            if(answer)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }/*,
     {
         type: 'input',
         message: "Describe how to install your project.",
-        name: 'installations'
+        name: 'installations',
+        validate: function (answer)
+        {
+            if(answer)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: "Describe how your project will be used.",
-        name: 'usages'
+        name: 'usages',
+        validate: function (answer)
+        {
+            if(answer)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: "Describe how other developers can contribute to this project.",
-        name: 'contributes'
+        name: 'contributes',
+        validate: function (answer)
+        {
+            if(answer)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     },    
     {
         type: 'input',
         message: "Describe any tests you have for your project, and how to run them.",
-        name: 'tests'
+        name: 'tests',
+        validate: function (answer)
+        {
+            if(answer)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     },    
     {
         type: 'list',
         message: "Choose a license type for your project.",
         choices: ['I need to work in a community.', 'I want it simple and permissive.', 'I care about sharing improvements.', "My project isn't a software.", 'I do not want to choose'],
-        name: 'licenses'
+        name: 'licenses',
     },  
     {
         type: 'input',
         message: "What is your GitHub username?",
         name: 'githubName',
-        validate: isValid(answer)
+        validate: function (answer)
+        {
+            if(answer)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: "What is your repo's name?",
         name: 'githubRepo',
-        validate: isValid(answer)
-    }, 
-    
+        validate: function (answer)
+        {
+            if(answer)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    } */
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(file, data) {
     fs.writeFile(file, data, err => {
         if (err) {
-          return console.log(err);
+          return console.log("error: " + err);
         }
       
         console.log("Your README.md file has been generated")
@@ -78,35 +162,23 @@ async function init() {
 
         // Prompt Inquirer questions
         const readMe = await inquirer.prompt(questions);
-        console.log("Your responses: ", userResponses);
+        console.log("Your responses: ", readMe);
     
         // Call GitHub api for user info
         const user = await api.getUser(readMe);
         console.log("Your GitHub user info: ", user);
     
         // Pass Inquirer userResponses and GitHub userInfo to generateMarkdown
-        const markdown = generateMarkdown(userResponses, userInfo);
+        const markdown = generateMarkdown(readMe, user);
         console.log(markdown);
     
         // Write markdown to file
-        await writeFileAsync(`${readMe.githubName}.md`, markdown);
+        await writeFileAsync(`WanderingLad.md`, markdown);
 
     } catch (error) {
         console.log(error);
     }
 };
-
-function isValid(answer)
-{
-    if(answer)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
 
 // Function call to initialize app
 init();
