@@ -1,10 +1,13 @@
-const api = require("./api")
+
 
 function getLicense(license) 
 {
+  //Why did you open this?
+
   //#region Boring License Stuff, only open to see licenses
   if(license === "I need to work in a community." || license === "I want it simple and permissive.")
   {
+    //#region MIT License
     return `MIT License
 
     Copyright (c) 2022 ${data.githubName}
@@ -26,9 +29,11 @@ function getLicense(license)
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.`;
+    //#endregion
   }
   else if(license === "I care about sharing improvements.")
   {
+    //#region GNU GENERAL PUBLIC LICENSE
     return `GNU GENERAL PUBLIC LICENSE
     Version 3, 29 June 2007
 
@@ -688,11 +693,11 @@ function getLicense(license)
     This is free software, and you are welcome to redistribute it
     under certain conditions.
     `
+    //#endregion
   }
   else if(license === "My project isn't a software.")
   {
-    return `The content of this project itself is licensed under the Creative Commons Attribution 3.0 Unported license, 
-    and the underlying source code used to format and display that content is licensed under the MIT license.`
+    return `The content of this project itself is licensed under the Creative Commons Attribution 3.0 Unported license, and the underlying source code used to format and display that content is licensed under the MIT license.`
   }
   else if(license === "I do not want to choose")
   {
@@ -701,9 +706,17 @@ function getLicense(license)
   //#endregion
 }
 
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) 
 {
+
+  /*
+    In this section I will be dividing each of the sections of the read me into their own variable
+    Each one will be "const" followed by an appropriate name
+    The data for each will be populated from the passed in readme values, now referenced as data
+    At the end I will concat all of the variables into one string and return it as the generated ReadMe
+  */
+
+
   const projectTitle = `# ${data.title}`;
 
   const projectDescription = 
