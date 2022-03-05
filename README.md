@@ -4,8 +4,10 @@
 This is a ReadMe Generator. The point of this project is to take in information from a user and compile it into a ReadMe (just like this one)
   
 ## Installation
-Node.js and NPM Inquirer are required to run this project.
-npm install inquirer 
+Node.js https://nodejs.org/en/
+NPM Inquirer https://www.npmjs.com/
+Are required to run this project.
+npm install inquirer
 
 ## Usage
 After downloading the project, run npm install inquirer to install the required library. Once you run the project just answer the questions to the best of your ability and the program will create a markdown file for you with your personalized ReadMe inside.
