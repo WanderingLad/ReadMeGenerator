@@ -7,7 +7,7 @@ const api = require('./utils/api.js');
 
 // TODO: Create an array of questions for user input
 const questions = [
-    {
+    /* {
         type: 'input',
         message: "What is your project's title?",
         name: 'title',
@@ -38,7 +38,7 @@ const questions = [
                 return false;
             }
         }
-    }/*,
+    },
     {
         type: 'input',
         message: "Describe how to install your project.",
@@ -109,7 +109,7 @@ const questions = [
         choices: ['I need to work in a community.', 'I want it simple and permissive.', 'I care about sharing improvements.', "My project isn't a software.", 'I do not want to choose'],
         name: 'licenses',
     },  
-    {
+    */{
         type: 'input',
         message: "What is your GitHub username?",
         name: 'githubName',
@@ -124,7 +124,7 @@ const questions = [
                 return false;
             }
         }
-    },
+    }/*,
     {
         type: 'input',
         message: "What is your repo's name?",
@@ -147,7 +147,7 @@ const questions = [
 function writeToFile(file, data) {
     fs.writeFile(file, data, err => {
         if (err) {
-          return console.log("error: " + err);
+          return console.log(err);
         }
       
         console.log("Your README.md file has been generated")
@@ -162,21 +162,18 @@ async function init() {
 
         // Prompt Inquirer questions
         const readMe = await inquirer.prompt(questions);
-        console.log("Your responses: ", readMe);
     
         // Call GitHub api for user info
         const user = await api.getUser(readMe);
-        console.log("Your GitHub user info: ", user);
     
         // Pass Inquirer userResponses and GitHub userInfo to generateMarkdown
         const markdown = generateMarkdown(readMe, user);
-        console.log(markdown);
     
         // Write markdown to file
-        await writeFileAsync(`WanderingLad.md`, markdown);
+        await writeFileAsync(`${readMe.githubName}ReadMe.md`, markdown);
 
     } catch (error) {
-        console.log(error);
+        console.log("error: " + error);
     }
 };
 

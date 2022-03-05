@@ -6,8 +6,8 @@ const api =
     {
         try
         {
-            //let response = axios.get(`https://api.github.com/users/${readMe.githubName}`)
-            return 'https://api.github.com/users/WanderingLad';
+            let response = axios.get(`https://api.github.com/users/${readMe.githubName}`)
+            return response;
         }
         catch (err)
         {
