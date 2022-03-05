@@ -1,4 +1,4 @@
-#ReadMe Generator
+# ReadMe Generator
 
 ## Description
 This is a ReadMe Generator. The point of this project is to take in information from a user and compile it into a ReadMe (just like this one)
