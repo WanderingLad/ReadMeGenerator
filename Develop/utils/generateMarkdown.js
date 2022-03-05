@@ -718,7 +718,7 @@ function generateMarkdown(data)
   
   This is a ReadMe that is auto-generated
 
-  [Installations](#installations)\n
+  [Installations](#installations)
 
   [Usages](#usages)
 

@@ -3,6 +3,7 @@ const fs = require('fs');
 const util = require('util');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 const api = require('./utils/api.js');
+const { Console } = require('console');
 
 const questions = [
     {
@@ -162,18 +163,19 @@ function writeToFile(file, data) {
     });
 }
 
-const writeFileAsync = util.promisify(writeToFile);
+const writeFile = util.promisify(writeToFile);
 
 async function init() {
     try {
 
+        console.log("You will be required to answer every question. If you don't have an answer, just say something else!");
         const readMe = await inquirer.prompt(questions);
     
         const user = await api.getUser(readMe);
     
         const markdown = generateMarkdown(readMe, user);
     
-        await writeFileAsync(`${readMe.githubName}ReadMe.md`, markdown);
+        await writeFile(`${readMe.githubName}-ReadMe.md`, markdown);
 
     } catch (error) {
         console.log("error: " + error);
