@@ -10,7 +10,7 @@ function getLicense(license)
     //#region MIT License
     return `MIT License
 
-    Copyright (c) 2022 ${data.githubName}
+    Copyright (c) 2022 ${license}
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -668,7 +668,7 @@ function getLicense(license)
     the "copyright" line and a pointer to where the full notice is found.
 
     <one line to give the program's name and a brief idea of what it does.>
-    Copyright (C) 2022  ${data.githubName}
+    Copyright (C) 2022  ${license}
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

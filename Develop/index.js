@@ -136,22 +136,6 @@ const questions = [
                 return false;
             }
         }
-    },
-    {
-        type: 'input',
-        message: "What is your repo's name?",
-        name: 'githubRepo',
-        validate: function (answer)
-        {
-            if(answer)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
     }
 ];
 //#endregion
