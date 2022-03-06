@@ -14,6 +14,9 @@ After downloading the project, run npm install inquirer to install the required 
   
 ## Credits
 James Reilly - https://github.com/WanderingLad/
+
+## GIF
+![Alt Text](ReadMeGIF.gif)
   
 ## License
 BSD 2-Clause License
